@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sky Ranger — a chase-view flight game</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0a1420;
+    height: 100%;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+  }
+  #wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  canvas {
+    display: block;
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+    background: #2f6fd0;
+    touch-action: none;
+  }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="game" width="1280" height="720"></canvas></div>
+<script type="module">
+  import { Game } from './src/main.js';
+  const game = new Game(document.getElementById('game'));
+  requestAnimationFrame((t) => game.frame(t));
+  window.__skyRanger = game;
+</script>
+</body>
+</html>
